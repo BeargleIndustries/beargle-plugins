@@ -1,0 +1,38 @@
+{
+  "name": "beargle-plugins",
+  "owner": {
+    "name": "Brad Leclerc",
+    "email": "brad@beargleindustries.com",
+    "url": "https://github.com/BeargleIndustries"
+  },
+  "metadata": {
+    "description": "Claude Code plugins by Beargle Industries",
+    "version": "1.0.0",
+    "homepage": "https://github.com/BeargleIndustries/claude-plugins"
+  },
+  "plugins": [
+    {
+      "name": "focusgroup",
+      "source": "./plugins/focusgroup",
+      "description": "AI-powered focus group reviews with deep protocols, advanced methodologies, quality control, and rich output formats",
+      "version": "1.1.0",
+      "author": {
+        "name": "Brad Leclerc",
+        "url": "https://github.com/BeargleIndustries"
+      },
+      "category": "Code Quality Testing",
+      "homepage": "https://github.com/BeargleIndustries/claude-plugins/tree/main/plugins/focusgroup",
+      "keywords": [
+        "focus-group",
+        "review",
+        "personas",
+        "delphi",
+        "debate",
+        "walkthrough",
+        "comparative",
+        "quality-control",
+        "swot"
+      ]
+    }
+  ]
+}
