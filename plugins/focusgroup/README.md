@@ -19,7 +19,7 @@ Point it at a website, codebase, product idea, or anything else — and get back
 Add the Beargle Industries marketplace and install:
 
 ```bash
-claude plugin marketplace add BeargleIndustries/focusgroup
+claude plugin marketplace add BeargleIndustries/claude-plugins
 claude plugin install focusgroup
 ```
 

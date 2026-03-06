@@ -13,7 +13,7 @@ A collection of Claude Code plugins by [Beargle Industries](https://github.com/B
 Add this marketplace to Claude Code:
 
 ```bash
-claude plugin marketplace add BeargleIndustries/focusgroup
+claude plugin marketplace add BeargleIndustries/claude-plugins
 ```
 
 Then install any plugin:
@@ -27,7 +27,7 @@ Restart Claude Code after installing. The `/focusgroup` command (plus `/fg` and 
 ## Update
 
 ```bash
-claude plugin marketplace update BeargleIndustries/focusgroup
+claude plugin marketplace update BeargleIndustries/claude-plugins
 claude plugin update focusgroup
 ```
 
