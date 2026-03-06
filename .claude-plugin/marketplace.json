@@ -8,7 +8,7 @@
   "metadata": {
     "description": "Claude Code plugins by Beargle Industries",
     "version": "1.0.0",
-    "homepage": "https://github.com/BeargleIndustries/claude-plugins"
+    "homepage": "https://github.com/BeargleIndustries/beargle-plugins"
   },
   "plugins": [
     {
@@ -21,7 +21,7 @@
         "url": "https://github.com/BeargleIndustries"
       },
       "category": "Code Quality Testing",
-      "homepage": "https://github.com/BeargleIndustries/claude-plugins/tree/main/plugins/focusgroup",
+      "homepage": "https://github.com/BeargleIndustries/beargle-plugins/tree/main/plugins/focusgroup",
       "keywords": [
         "focus-group",
         "review",
@@ -44,7 +44,7 @@
         "url": "https://github.com/BeargleIndustries"
       },
       "category": "Documentation",
-      "homepage": "https://github.com/BeargleIndustries/claude-plugins/tree/main/plugins/changelog",
+      "homepage": "https://github.com/BeargleIndustries/beargle-plugins/tree/main/plugins/changelog",
       "keywords": [
         "changelog",
         "documentation",

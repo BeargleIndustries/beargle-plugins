@@ -7,7 +7,7 @@ AI coding agents are prolific documentation writers — and they frequently writ
 ## Install
 
 ```bash
-claude plugin marketplace add BeargleIndustries/claude-plugins
+claude plugin marketplace add BeargleIndustries/beargle-plugins
 claude plugin install changelog
 ```
 

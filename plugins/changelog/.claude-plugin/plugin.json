@@ -19,5 +19,5 @@
     "doc-drift",
     "claude-code-plugin"
   ],
-  "repository": "https://github.com/BeargleIndustries/claude-plugins"
+  "repository": "https://github.com/BeargleIndustries/beargle-plugins"
 }

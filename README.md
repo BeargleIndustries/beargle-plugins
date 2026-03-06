@@ -14,7 +14,7 @@ A collection of Claude Code plugins by [Beargle Industries](https://github.com/B
 Add this marketplace to Claude Code:
 
 ```bash
-claude plugin marketplace add BeargleIndustries/claude-plugins
+claude plugin marketplace add BeargleIndustries/beargle-plugins
 ```
 
 Then install any plugin:
