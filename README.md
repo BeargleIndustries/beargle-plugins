@@ -16,15 +16,13 @@ Point it at a website, codebase, product idea, or anything else — and get back
 
 ## Install
 
-```bash
-claude plugin add BeargleIndustries/focusgroup
-```
-
-Or install locally:
+Clone the repo into your Claude Code plugins directory:
 
 ```bash
 git clone https://github.com/BeargleIndustries/focusgroup.git ~/.claude/plugins/local/focusgroup
 ```
+
+Then restart Claude Code. The `/focusgroup` command will be available immediately.
 
 ## Quick Start
 
