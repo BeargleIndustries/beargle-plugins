@@ -7,9 +7,10 @@ Persistent memory for Claude Code using an Obsidian vault. Your AI agent remembe
 The plugin gives Claude Code a knowledge vault — a folder of interconnected markdown notes. At the start of every session, Claude Code reads your TODOs and current project context. As you work, it writes discoveries back. Next session, it picks up where you left off.
 
 The magic is in the CLAUDE.md snippet generated during setup. It tells Claude Code:
-- Read the vault at session start (2 reads max)
-- Detect current project from working directory
-- Write notes when it discovers something worth remembering
+- Auto-orient at session start — read TODOs and current project context (2 reads max)
+- Detect current project from working directory (git repo name or folder name)
+- Write notes with consistent frontmatter when it discovers something worth remembering
+- Search the vault naturally via file tools — no special commands needed
 - Follow Obsidian conventions (wikilinks, frontmatter, callouts)
 
 You don't need to learn commands to use it. Claude Code handles vault reads/writes naturally. The `/obs` commands are helpers for specific tasks.

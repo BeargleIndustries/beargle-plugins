@@ -325,41 +325,66 @@ Output the following block with `{vault_path}` replaced by the actual resolved p
 ```markdown
 ## Obsidian Knowledge Vault
 
-Persistent knowledge vault at `{vault_path}`.
+Persistent cross-session, cross-project memory using an Obsidian vault accessed via direct file tools (Read, Write, Edit, Glob, Grep). No MCP server required.
+
+Uses installed skills: `obs-memory` (vault structure + commands), `obsidian-markdown` (proper Obsidian syntax), `obsidian` (best practices).
+
+**Vault path:** `{vault_path}`
 Set `$OBSIDIAN_VAULT_PATH` = `{vault_path}` for all vault operations.
+
+### Vault Structure
+
+    {vault_path}/
+    ├── Home.md                           # Dashboard
+    ├── projects/{name}/
+    │   ├── {name}.md                     # Project overview — START HERE
+    │   ├── architecture/                 # ADRs and design decisions
+    │   ├── components/                   # Per-component notes
+    │   └── patterns/                     # Project-specific patterns
+    ├── domains/{tech}/                   # Cross-project knowledge
+    ├── patterns/                         # Universal patterns
+    ├── sessions/                         # Session logs
+    ├── todos/Active TODOs.md             # Pending work
+    ├── templates/                        # Note templates
+    └── inbox/                            # Unsorted
 
 ### Session Start — Auto-Orient (max 2 reads)
 
-At the start of every session, orient yourself:
+**On the very first message of any session** (even "hey", "hi", or anything vague), auto-orient immediately:
 
 1. Read `{vault_path}/todos/Active TODOs.md` — know what's pending
-2. Detect current project from working directory:
-   ```bash
-   basename $(git rev-parse --show-toplevel 2>/dev/null) 2>/dev/null || basename $(pwd)
-   ```
-   Check if a matching project exists in `{vault_path}/projects/*/`. If found, read `{vault_path}/projects/{name}/{name}.md`.
-3. Greet with 2-3 lines of context: what project, what's active/pending.
+2. Detect current project from working directory using `basename $(git rev-parse --show-toplevel 2>/dev/null) 2>/dev/null || basename $(pwd)`. Check if a matching project exists in `{vault_path}/projects/*/`. If found, read `{vault_path}/projects/{name}/{name}.md`. The project overview has wikilinks to components, patterns, ADRs — do NOT follow those links yet; follow on demand.
+3. Greet with 2-3 lines of context: what project, what's active/pending. Keep it brief and useful, not ceremonial.
+
+If the user's first message is a specific task, orient AND start working — don't make them wait for a greeting before getting to it.
 
 If the working directory doesn't match any project in the vault, offer to scaffold it with `/obs project`.
 
 ### During Work — Lookup Before Reading
 
-- **Frontmatter first:** When scanning notes, read first ~10 lines to check `tags`, `type`, `status` before reading full body.
+- **Frontmatter first:** When scanning notes, read first ~10 lines to check `tags`, `type`, `status`, `project` before reading the full body.
 - **List before read:** Glob directory contents before reading individual files.
-- **Follow links on demand:** Project overview wikilinks to components/patterns/ADRs — only read when the current task needs them.
-- Use `/obs lookup <query>` to search the vault.
-- Use `/obs note <type> [name]` to capture discoveries.
-- Use `/obs todo` to manage persistent tasks.
+- **Follow links on demand:** The project overview wikilinks to components/patterns/ADRs. Only read those when the current task needs them.
+- **Search:** Use `Grep` across `{vault_path}/` for freetext search across the vault.
 
 ### Writing to the Vault
 
-Use Obsidian-flavored markdown (wikilinks `[[Note]]`, frontmatter properties, callouts `> [!type]`).
+Use Obsidian-flavored markdown (wikilinks `[[Note]]`, frontmatter properties, callouts `> [!type]`). Follow the `obsidian-markdown` skill syntax.
 
 **When to write:**
-- New component deeply analyzed → `/obs note component <name>`
-- Architecture decision made → `/obs note adr <title>`
-- Pattern identified → `/obs note pattern <name>`
-- Session ending → `/obs recap`
+- New component deeply analyzed → create component note
+- Architecture decision made → create ADR
+- Pattern identified → create pattern note
+- Session ending → write session summary (if user requests — not automatic)
+
+**Frontmatter conventions (always include):**
+
+    ---
+    tags: [category, project/short-name]
+    type: <component|adr|session|project|pattern>
+    project: "[[projects/{name}/{name}]]"
+    created: YYYY-MM-DD
+    ---
 
 **Scoping:**
 | Knowledge type | Location |
@@ -378,20 +403,22 @@ When the user types `/obs <command>`, invoke the obs-vault plugin's obs-memory s
 
 | Command | Action |
 |---|---|
-| `/obs init [path]` | Create a new vault |
 | `/obs analyze` | Deep-analyze current project, populate vault |
-| `/obs recap` | Write session summary |
+| `/obs recap` | Write session summary (manual — ask for it when you want one) |
 | `/obs project [name]` | Scaffold new project |
 | `/obs note <type> [name]` | Create component/adr/pattern/session note |
 | `/obs todo [action]` | Manage TODOs |
-| `/obs lookup <query>` | Search the vault |
+| `/obs init [path]` | Create a new vault |
+| `/obs lookup <query>` | Explicit vault search (usually not needed — agent searches naturally) |
 | `/obs relate <src> <tgt>` | Create relationships between notes |
 
 ### Rules
 
+- Access vault via Read/Write/Edit/Glob/Grep — no MCP needed
 - Never store source code in the vault — only context, decisions, summaries
 - Session logs under 50 lines
 - The vault is the single source of truth for cross-session context
+- Use Obsidian-flavored markdown (wikilinks, frontmatter, callouts)
 ```
 
 ---
