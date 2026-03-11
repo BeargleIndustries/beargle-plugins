@@ -8,6 +8,7 @@ A growing collection of Claude Code plugins by [Beargle Industries](https://gith
 |--------|-------------|
 | [focusgroup](plugins/focusgroup/) | AI-powered focus group reviews with deep protocols, advanced methodologies, quality control, and rich output formats |
 | [changelog](plugins/changelog/) | Changelog generation with doc-vs-code consistency auditing — catches wrong install instructions, outdated API examples, nonexistent CLI flags, and more |
+| [obs-vault](plugins/obs-vault/) | Persistent Obsidian-based memory across sessions. Knowledge vault for project context, architecture decisions, component notes, and TODOs |
 | *More coming soon* | |
 
 ## Install
