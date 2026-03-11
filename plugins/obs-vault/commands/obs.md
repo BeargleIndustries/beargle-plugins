@@ -1,6 +1,6 @@
 ---
 description: "Obsidian vault memory commands — shorthand for all vault operations"
-argument-hint: "<command> [args] — commands: init, analyze, recap, project, note, todo, lookup, relate"
+argument-hint: "<command> [args] — commands: setup, analyze, recap, project, note, todo, init"
 aliases: [obs]
 ---
 
@@ -41,8 +41,8 @@ If `{{ARGUMENTS}}` is empty or blank, go to Phase 3 (show help).
 | `project [name]` | Scaffold a new project in vault |
 | `note <type> [name]` | Create note (component, adr, pattern, session) |
 | `todo [action]` | Manage persistent TODOs |
-| `lookup <query>` | Search the vault |
-| `relate <src> <tgt>` | Create relationships between notes |
+| `lookup <query>` | Search vault notes (Claude Code handles this naturally via CLAUDE.md — this command is for explicit searches) |
+| `relate <src> <tgt>` | Create relationships between notes (Claude Code creates wikilinks naturally when writing notes — this command is for manual relationship management) |
 
 **Special case — `setup`:**
 If subcommand is `setup`, redirect: invoke the `obs-vault:obs-setup` skill. Do not continue with this command.

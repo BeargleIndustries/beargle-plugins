@@ -282,14 +282,13 @@ Announce: `[OBS-SETUP] Vault created at {vault_path}`
 
 ### Phase 4: Scaffold Current Project
 
-Check if inside a git repo:
+Detect the project name using directory-based detection (git preferred, folder name as fallback):
 
 ```bash
-git rev-parse --show-toplevel
+basename $(git rev-parse --show-toplevel 2>/dev/null) 2>/dev/null || basename $(pwd)
 ```
 
-- If **not a git repo**: announce `[OBS-SETUP] Not in a git repo — skipping project scaffold` and skip to Phase 5.
-- If **yes**: detect project name with `basename $(git rev-parse --show-toplevel)`.
+This works in any folder, not just git repos.
 
 Check if `{vault_path}/projects/{name}/{name}.md` already exists.
 
@@ -415,7 +414,7 @@ Report what was done:
 [OBS-SETUP COMPLETE]
 
 Vault: {vault_path} ({created/already existed})
-Project: {name} ({scaffolded/already scaffolded/not in a git repo})
+Project: {name} ({scaffolded/already scaffolded/not scaffolded})
 CLAUDE.md snippet: generated above
 
 Next steps:
@@ -432,7 +431,7 @@ Next steps:
 |-------|--------|
 | Cannot resolve `~` | Use `/tmp/AgentMemory` as fallback, warn user |
 | Directory creation fails (permissions) | Report the specific path and error, stop |
-| Git not installed or not a repo | Skip Phase 4, note in summary |
+| Git not installed | Fall back to `basename $(pwd)` for project name, note in summary |
 | `git remote get-url origin` fails | Leave `repo:` blank in project template |
 | Project template write fails | Warn, skip scaffold, continue to Phase 5 |
 | Vault already fully set up | Skip all creation, still output Phase 5 snippet and Phase 6 instructions |
