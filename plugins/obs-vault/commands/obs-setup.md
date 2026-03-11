@@ -467,7 +467,7 @@ When the user types `/obs <command>`, invoke the obs-vault plugin's obs-memory s
 | `/obs project [name]` | Scaffold new project |
 | `/obs note <type> [name]` | Create component/adr/pattern/session note |
 | `/obs todo [action]` | Manage TODOs |
-| `/obs init [path]` | Create a new vault |
+| `/obs init [path]` | Create a new vault (redirects to `/obs-setup`) |
 | `/obs lookup <query>` | Explicit vault search (usually not needed — agent searches naturally) |
 | `/obs relate <src> <tgt>` | Create relationships between notes |
 

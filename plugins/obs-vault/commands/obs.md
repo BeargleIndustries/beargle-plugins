@@ -35,7 +35,7 @@ If `{{ARGUMENTS}}` is empty or blank, go to Phase 3 (show help).
 
 | Subcommand | What it does |
 |------------|-------------|
-| `init [path]` | Create a new vault from template |
+| `init [path]` | Create a new vault (redirects to `/obs-setup`) |
 | `analyze` | Deep-analyze current project, populate vault |
 | `recap` | Write session summary |
 | `project [name]` | Scaffold a new project in vault |
@@ -44,8 +44,8 @@ If `{{ARGUMENTS}}` is empty or blank, go to Phase 3 (show help).
 | `lookup <query>` | Search vault notes (Claude Code handles this naturally via CLAUDE.md — this command is for explicit searches) |
 | `relate <src> <tgt>` | Create relationships between notes (Claude Code creates wikilinks naturally when writing notes — this command is for manual relationship management) |
 
-**Special case — `setup`:**
-If subcommand is `setup`, redirect: invoke the `obs-vault:obs-setup` command (note: this is a command, not a skill). Do not continue with this command.
+**Special cases — `setup` and `init`:**
+If subcommand is `setup` or `init`, redirect: invoke the `obs-vault:obs-setup` command (note: this is a command, not a skill). If the user passed a path argument with `init` (e.g., `init ~/MyVault`), pass it as `--path ~/MyVault`. Do not continue with this command.
 
 **All other subcommands:**
 Load and follow the `obs-vault:obs-memory` skill, passing the full original arguments string `{{ARGUMENTS}}` as the input. Execute the matched skill operation directly — do not summarize or paraphrase the skill instructions.

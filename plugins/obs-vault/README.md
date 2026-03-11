@@ -53,7 +53,7 @@ These are optional — Claude Code handles most vault operations naturally throu
 | `/obs note <type> [name]` | Create a specific note (component, adr, pattern) |
 | `/obs todo [action]` | Add/complete/view TODOs |
 | `/obs lookup <query>` | Explicit vault search (agent usually searches naturally) |
-| `/obs init [path]` | Create a vault at a specific path |
+| `/obs init [path]` | Create a vault (redirects to `/obs-setup`) |
 
 ## Vault Structure
 
