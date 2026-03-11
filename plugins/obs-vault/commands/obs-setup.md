@@ -309,10 +309,33 @@ Check if `{vault_path}/projects/{name}/{name}.md` already exists.
      - `{Project Name}` → title-cased project name
      - `{short-name}` → `{name}`
      - `repo:` → detected remote URL (or blank)
-     - `path:` → absolute path to the git root
+     - `path:` → absolute path to the working directory
      - `language:` → detected language (or blank)
      - `framework:` → detected framework (or blank)
      - `{{date}}` → today's date in `YYYY-MM-DD`
+
+  5. Create a project-specific `CLAUDE.md` in the working directory (if one doesn't already exist). Read the project's source files to fill in real values:
+     ```markdown
+     # {Project Name}
+
+     ## Project Context
+     {2-3 sentence description based on README or source files}
+     Vault overview: `{vault_path}/projects/{name}/{name}.md`
+
+     ## Tech Stack
+     - {detected language}
+     - {detected framework/dependencies}
+
+     ## Conventions
+     - {any conventions detected from config files, linters, etc.}
+
+     ## Key Paths
+     - {important directories and files}
+
+     ## When Working on This Project
+     - Check vault for existing context before deep-diving into code
+     ```
+     Keep it under 80 lines. If a `CLAUDE.md` already exists, don't overwrite — just suggest adding a vault reference line if missing.
 
   Announce: `[OBS-SETUP] Project {name} scaffolded at {vault_path}/projects/{name}/`
 
@@ -358,7 +381,15 @@ Set `$OBSIDIAN_VAULT_PATH` = `{vault_path}` for all vault operations.
 
 If the user's first message is a specific task, orient AND start working — don't make them wait for a greeting before getting to it.
 
-If the working directory doesn't match any project in the vault, offer to scaffold it with `/obs project`.
+**No match found — New Project Setup:**
+If the working directory doesn't match any project in the vault, this is a new project:
+1. Tell the user: "This directory isn't in the vault yet. Want me to set it up?"
+2. If yes, run `/obs project` which will:
+   a. Create vault project folder and project note
+   b. Create a lean `CLAUDE.md` in the project directory (tech stack, conventions, key paths)
+   c. Add the project to the vault's Projects.md index
+   d. Auto-detect language, framework, and repo URL from project files
+3. Then proceed with normal auto-orient using the new project note
 
 ### During Work — Lookup Before Reading
 

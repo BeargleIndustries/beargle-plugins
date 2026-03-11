@@ -515,7 +515,35 @@ Scaffold a new project in the vault. Uses the first argument as the project name
 
 5. **Update Projects.md**: Add a row to the project table in `$VAULT/projects/Projects.md`.
 
-6. **Report** the scaffolded structure.
+6. **Create project-specific CLAUDE.md** in the working directory (if one doesn't already exist):
+
+   Write a lean `CLAUDE.md` at the project root with this structure:
+   ```markdown
+   # {Project Name}
+
+   ## Project Context
+   {2-3 sentence description based on README, package.json, or source files}
+   Vault overview: `{vault_path}/projects/{name}/{name}.md`
+
+   ## Tech Stack
+   - {detected language}
+   - {detected framework/dependencies}
+
+   ## Conventions
+   - {any conventions detected from config files, linters, etc.}
+
+   ## Key Paths
+   - {important directories and files detected from project structure}
+
+   ## When Working on This Project
+   - Check vault for existing context before deep-diving into code
+   ```
+
+   Read the project's source (README, package.json/pyproject.toml/Cargo.toml, config files) to fill in real values — don't leave placeholders. Keep it under 80 lines. This file gives Claude Code per-project grounding without bloating the global config.
+
+   If a `CLAUDE.md` already exists in the working directory, do NOT overwrite it. Instead, check if it has a vault reference line. If not, suggest the user add: `Vault overview: {vault_path}/projects/{name}/{name}.md`
+
+7. **Report** the scaffolded structure.
 
 ### `note` — Create a Note from Template
 
