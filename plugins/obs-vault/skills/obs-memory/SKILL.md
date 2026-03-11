@@ -127,7 +127,7 @@ Always include in new notes:
 ```yaml
 ---
 tags: [category, project/short-name]
-type: <component|adr|session|project>
+type: <component|adr|session|project|pattern>
 project: "[[projects/{name}/{name}]]"
 created: YYYY-MM-DD
 ---
@@ -596,6 +596,7 @@ Create at `$VAULT/projects/$PROJECT/patterns/{name}.md`:
 ```yaml
 ---
 tags: [patterns, project/{short-name}]
+type: pattern
 project: "[[projects/$PROJECT/$PROJECT]]"
 created: {YYYY-MM-DD}
 ---

@@ -1,6 +1,6 @@
 ---
 description: "Obsidian vault memory commands — shorthand for all vault operations"
-argument-hint: "<command> [args] — commands: setup, analyze, recap, project, note, todo, init"
+argument-hint: "<command> [args] — commands: analyze, recap, project, note, todo, init, lookup, relate, setup"
 aliases: [obs]
 ---
 
@@ -45,7 +45,7 @@ If `{{ARGUMENTS}}` is empty or blank, go to Phase 3 (show help).
 | `relate <src> <tgt>` | Create relationships between notes (Claude Code creates wikilinks naturally when writing notes — this command is for manual relationship management) |
 
 **Special case — `setup`:**
-If subcommand is `setup`, redirect: invoke the `obs-vault:obs-setup` skill. Do not continue with this command.
+If subcommand is `setup`, redirect: invoke the `obs-vault:obs-setup` command (note: this is a command, not a skill). Do not continue with this command.
 
 **All other subcommands:**
 Load and follow the `obs-vault:obs-memory` skill, passing the full original arguments string `{{ARGUMENTS}}` as the input. Execute the matched skill operation directly — do not summarize or paraphrase the skill instructions.

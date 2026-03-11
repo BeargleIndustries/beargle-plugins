@@ -148,6 +148,21 @@ _Group items by project. Use checkboxes for pending, move completed to ## Comple
 ## Completed
 ```
 
+**`{vault_path}/sessions/Session Log.md`:**
+```markdown
+---
+tags: [meta, sessions]
+type: index
+---
+
+# Session Log
+
+| Date | Project | Branch | Summary |
+|------|---------|--------|---------|
+
+_Updated automatically by `/obs recap`._
+```
+
 **`{vault_path}/templates/project.md`:**
 ```markdown
 ---
@@ -363,7 +378,7 @@ Read `~/.claude/CLAUDE.md` (resolve `~` to the user's home directory).
 
 Persistent cross-session, cross-project memory using an Obsidian vault accessed via direct file tools (Read, Write, Edit, Glob, Grep). No MCP server required.
 
-Uses installed skills: `obs-memory` (vault structure + commands), `obsidian-markdown` (proper Obsidian syntax), `obsidian` (best practices).
+Uses installed skills: `obs-vault:obs-memory` (vault structure + commands), `obs-vault:obsidian-markdown` (proper Obsidian syntax), `obs-vault:obsidian` (best practices).
 
 **Vault path:** `{vault_path}`
 Set `$OBSIDIAN_VAULT_PATH` = `{vault_path}` for all vault operations.
